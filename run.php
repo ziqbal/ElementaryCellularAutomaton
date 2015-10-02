@@ -52,39 +52,20 @@ if($y==$y1){
 }
 
 $flagDraw = false ;
+
 while( $y <= $y2 ) {
-
-	//print("$y\n");
-
-	//$tmin = $tapeMin + 0 ;
-	//$tmax = $tapeMax - 0 ;
 
 	$tapeNext = array( ) ;
 
 	for( $i = $tapeMin ; $i <= $tapeMax ; $i++ ){
 
-		//$ruleVal = $rules[ $tape[ $i - 1 ].$tape[ $i ].$tape[ $i + 1 ] ];
-
 		$tapeNext[ $i ] = $rules[ $tape[ $i - 1 ].$tape[ $i ].$tape[ $i + 1 ] ];
-
-
-		/*
-		if( $flagDraw && $ruleVal == $symbols[ 1 ] ) {
-
-			imagesetpixel( $gim , $i - $x1 , $y - $y1 + 1 , $col2 ) ;
-
-		} else {
-			*/
 
 			if( $y >= $y1 && $tapeNext[ $i ]== $symbols[ 1 ] ){
 
 				imagesetpixel( $gim , $i - $x1 , $y - $y1 + 1 , $col2 ) ;
 
-				//$flagDraw = true ; 
-
 			}
-
-		//}
 
 	}
 
@@ -93,14 +74,8 @@ while( $y <= $y2 ) {
 	$tape[ $tapeMin-- ] = $symbols[ 0 ] ;
 	$tape[ $tapeMax++ ] = $symbols[ 0 ] ;
 
-	//$tapeMin-- ;
-	//$tapeMax++ ;
-
 	$tape[ $tapeMin ] = $symbols[ 0 ] ;
 	$tape[ $tapeMax ] = $symbols[ 0 ] ;
-
-
-	//print_r($tape);
 
 	$y++ ;
 
