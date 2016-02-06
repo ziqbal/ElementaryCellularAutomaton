@@ -104,7 +104,7 @@ function ruleupdate(){
 	global $dline;
 	global $tick;
 
-	if($tick>100){
+	if($tick>1002){
 	$dline=array();
 	for($j=0;$j<1000;$j++){
 		$v=3;
@@ -121,11 +121,11 @@ function ruleupdate(){
 
 	for($j=1;$j<999;$j++){
 		if( ( $dline[$j-1] == 0 ) && ( $dline[$j] == 0 ) && ( $dline[$j+1] == 0 ) ) $newline[$j] = 0 ;
-		if( ( $dline[$j-1] == 0 ) && ( $dline[$j] == 0 ) && ( $dline[$j+1] == 1 ) ) $newline[$j] = 1 ;
+		if( ( $dline[$j-1] == 0 ) && ( $dline[$j] == 0 ) && ( $dline[$j+1] == 1 ) ) $newline[$j] = 0 ;
 		if( ( $dline[$j-1] == 0 ) && ( $dline[$j] == 1 ) && ( $dline[$j+1] == 0 ) ) $newline[$j] = 0 ;
 		if( ( $dline[$j-1] == 0 ) && ( $dline[$j] == 1 ) && ( $dline[$j+1] == 1 ) ) $newline[$j] = 0 ;
-		if( ( $dline[$j-1] == 1 ) && ( $dline[$j] == 0 ) && ( $dline[$j+1] == 0 ) ) $newline[$j] = 1 ;
-		if( ( $dline[$j-1] == 1 ) && ( $dline[$j] == 0 ) && ( $dline[$j+1] == 1 ) ) $newline[$j] = 0 ;
+		if( ( $dline[$j-1] == 1 ) && ( $dline[$j] == 0 ) && ( $dline[$j+1] == 0 ) ) $newline[$j] = 0 ;
+		if( ( $dline[$j-1] == 1 ) && ( $dline[$j] == 0 ) && ( $dline[$j+1] == 1 ) ) $newline[$j] = 1 ;
 		if( ( $dline[$j-1] == 1 ) && ( $dline[$j] == 1 ) && ( $dline[$j+1] == 0 ) ) $newline[$j] = 0 ;
 		if( ( $dline[$j-1] == 1 ) && ( $dline[$j] == 1 ) && ( $dline[$j+1] == 1 ) ) $newline[$j] = 0 ;
 	}
@@ -141,8 +141,8 @@ function ruleupdate(){
 	for($j=0;$j<1000;$j++){
 		$v=0;
 		//if($j==514) $v=1;
-		if(mt_rand(0,100)>50) $v=1;
-		//if($j==507) $v=1;
+		//if(mt_rand(0,100)>50) $v=1;
+		if(($j%2)==1) $v=1;
 		$dline[]=$v;
 	}
 
@@ -150,8 +150,8 @@ function ruleupdate(){
 	for($i=0;$i<21;$i++){
 
 		include("run-draw.php");
-		ruleupdate();	
 		$tick++;
+		ruleupdate();	
 	}
 ?>
 
