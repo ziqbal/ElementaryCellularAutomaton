@@ -9,7 +9,6 @@ $text = 'Testing...';
 $font = 'arial.ttf';
 
 
-
 $im = imagecreatetruecolor( $iw, $ih ) ;
 $color1 = imagecolorallocate( $im , 0 , 0 , 0 ) ;
 $color2 = imagecolorallocate( $im , 255,255,255 ) ;
